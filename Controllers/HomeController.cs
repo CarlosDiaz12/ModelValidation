@@ -16,30 +16,6 @@ namespace ModelValidation.Controllers
         [HttpPost]
         public ViewResult MakeBooking(Appointment appt)
         {
-            // Explicitly Validating a Model
-
-            if (string.IsNullOrWhiteSpace(appt.ClientName))
-            {
-                ModelState.AddModelError("ClientName", "Please enter yourname");
-            }       
-
-            if (ModelState.IsValidField("Date") && DateTime.Now > appt.Date)
-            {
-                ModelState.AddModelError("Date", "Please enter a date in the future");
-            }
-
-            if (!appt.TermsAccepted)
-            {
-                ModelState.AddModelError("TermsAccepted", "You must accept the terms");
-            }
-
-            if (ModelState.IsValidField("ClientName") && ModelState.IsValidField("Date")
-                && appt.ClientName == "Joe" && appt.Date.DayOfWeek == DayOfWeek.Monday)
-            {
-                // A Model-Level Validation Error
-                ModelState.AddModelError("", "Joe cannot book appointments on Mondays");
-            }
-
             if (ModelState.IsValid)
             {
                 // statements to store new Appointment in a

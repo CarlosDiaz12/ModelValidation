@@ -7,6 +7,8 @@ using System.Web;
 
 namespace ModelValidation.Models
 {
+    // Applying a Model-Level Custom Validation Attribute
+    [NoJoeOnMondays]
     public class Appointment
     {
         [Required]
